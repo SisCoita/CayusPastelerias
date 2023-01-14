@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registro de Pedidos de Pasteler&iacutea "Cayus"</title>
+</head>
+<body>
+	<h1>Registro de Pedidos de Pasteler&iacutea</h1>
+	<form action="guardar_pedido.php" method="post">
+		<label for="fecha">Fecha:</label>
+		<input type="date" id="fecha" name="fecha"><br><br>
+		<label for="nombre">Nombre del Cliente:</label>
+		<input type="text" id="nombre" name="nombre"><br><br>
+		<label for="tamano">Tama&ntildeo del Pastel:</label>
+		<select id="tamano" name="tamaño">
+			<option value="1/4">1/4 Kg</option>
+			<option value="1/2">1/2 Kg</option>
+			<option value="3/4">3/4 Kg</option>
+			<option value="1">1 Kg</option>
+			<option value="1.5">1.5 Kg</option>
+			<option value="2">2 Kg</option>
+            <option value="2.5">2.5 Kg</option>
+			<option value="3">3 Kg</option>
+            <option value="3.5">3.5 Kg</option>
+			<option value="4">4 Kg</option>
+            <option value="4.5">4.5 Kg</option>
+			<option value="5">5 Kg</option>
+            <option value="5">5.5 Kg</option>
+			<option value="6">6 Kg</option>
+            <option value="6.5">6.5 Kg</option>
+			<option value="7">7 Kg</option>
+            <option value="7">7.5 Kg</option>
+		</select><br><br>
+		<label for="pastel">Pastel:</label>
+		<select id="pastel" name="pastel">
+			<option value="mermelada">Mermelada</option>
+			<option value="crema">Crema</option>
+			<option value="tresleches">Tres Leches</option>
+		</select><br><br>
+		<label for="color">Color:</label>
+		<input type="text" id="color" name="color"><br><br>
+		<label for="leyenda">Leyenda:</label>
+		<input type="text" id="leyenda" name="leyenda"><br><br>
+		<label for="tematica">Tem&aacutetica:</label>
+		<input type="text" id="tematica" name="tematica"><br><br>
+		<label for="hora">Hora:</label>
+		<input type="time" id="hora" name="hora"><br><br>
+		<label for="telefono">Tel&eacutefono:</label>
+		<input type="tel" id="telefono" name="telefono"><br><br>
+        <label for="otros">Otros:</label>
+        <textarea id="otros" name="otros"></textarea><br><br>
+        <input type="submit" value="Enviar Pedido">
+        </form>
+        <button type="button" onclick="addField()">Agregar un nuevo pedido de Pastel</button>
+  <script>
+    var counter = 1;
+    var limit = 5;
+    
+    function addField() {
+        if (counter == limit)  {
+      alert("Has alcanzado el limite de pedido de " + counter + " Pasteles.");
+    }
+    else {
+      var tamanoId = document.getElementsByName("tamano[]").length + 1;
+      var pastelId = document.getElementsByName("pastel[]").length + 1;
+      var colorId = document.getElementsByName("color[]").length + 1;
+      var leyendaId = document.getElementsByName("leyenda[]").length + 1;
+      var tematicaId = document.getElementsByName("tematica[]").length + 1;
+
+      var form = document.querySelector("form");
+      var div = document.createElement("div");
+      div.innerHTML = `
+        <div>
+            <label for="tamano${tamanoId}">Tama&ntildeo del Pastel:</label>
+		<select id="tamano${tamanoId}" name="tamano${tamanoId}">
+			<option value="1/4">1/4 Kg</option>
+			<option value="1/2">1/2 Kg</option>
+			<option value="3/4">3/4 Kg</option>
+			<option value="1">1 Kg</option>
+			<option value="1.5">1.5 Kg</option>
+			<option value="2">2 Kg</option>
+            <option value="2.5">2.5 Kg</option>
+			<option value="3">3 Kg</option>
+            <option value="3.5">3.5 Kg</option>
+			<option value="4">4 Kg</option>
+            <option value="4.5">4.5 Kg</option>
+			<option value="5">5 Kg</option>
+            <option value="5">5.5 Kg</option>
+			<option value="6">6 Kg</option>
+            <option value="6.5">6.5 Kg</option>
+			<option value="7">7 Kg</option>
+            <option value="7">7.5 Kg</option>
+		</select><br><br>
+    </div>
+        <label for="pastel${pastelId}">Pastel:</label>
+		<select id="pastel${pastelId}" name="pastel${pastelId}">
+			<option value="mermelada">Mermelada</option>
+			<option value="crema">Crema</option>
+			<option value="tresleches">Tres Leches</option>
+		</select><br><br>
+    </div>
+        <label for="color${colorId}">Color:</label>
+		<input type="text" id="color${colorId}" name="color${colorId}"><br><br>
+    </div>
+		<label for="leyenda${leyendaId}">Leyenda:</label>
+		<input type="text" id="leyenda${leyendaId}" name="leyenda${leyendaId}"><br><br>
+    </div>
+		<label for="tematica${tematicaId}">Tem&aacutetica:</label>
+		<input type="text" id="tematica${tematicaId}" name="tematica${tematicaId}"><br><br>
+     </div>
+      `;
+      form.appendChild(div);
+  }
+  counter++;
+    }
+
+
+	
+  </script>
